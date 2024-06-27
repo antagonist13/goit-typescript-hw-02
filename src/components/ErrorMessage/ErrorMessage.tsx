@@ -1,5 +1,11 @@
-// export default function ErrorMessage() {
-//     return <>
-//         <p> Oops, something wrong!</p>
-//     </>
-// }
+import React from "react";
+
+const ErrorMessage: React.FC = () => {
+    return (
+        <>
+            <p>Oops, something went wrong!</p>
+        </>
+    );
+};
+
+export default ErrorMessage;

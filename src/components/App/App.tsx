@@ -26,7 +26,7 @@ export default function App() {
         try {
         setIsLoading(true);
         setIsError(false);
-        const list: any = await getImages(query, page);
+        const list: ObjectType = await getImages(query, page);
             setPhotos((prevState: ObjectType[]) => [...prevState, ...list.data.results]);
             setTotalPages(list.data.total_pages)
       } catch (error) {
