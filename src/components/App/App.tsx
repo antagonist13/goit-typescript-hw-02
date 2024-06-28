@@ -27,7 +27,6 @@ export default function App() {
         setIsLoading(true);
         setIsError(false);
           const list: ApiSearchResponse = await getImages(query, page)
-          console.log(list);
           
             setPhotos((prevState: PhotoType[]) => [...prevState, ...list.results])
             setTotalPages(list.total_pages)
