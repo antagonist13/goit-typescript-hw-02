@@ -7,13 +7,13 @@ import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 import ImageModal from '../ImageModal/ImageModal'
 import { getImages } from '../../images-api'
 import { useEffect, useState } from 'react'
-import { ObjectType } from '../../types'
+import { ApiSearchResponse, PhotoType } from '../../types'
 
 
 export default function App() {
     const [query, setQuery] = useState <string>('')
     const [isMounted, setIsMounted] = useState<boolean>(false);
-    const [photos, setPhotos] = useState<ObjectType[]>([]);
+    const [photos, setPhotos] = useState<PhotoType[]>([]);
     const [page, setPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -26,9 +26,11 @@ export default function App() {
         try {
         setIsLoading(true);
         setIsError(false);
-        const list: ObjectType = await getImages(query, page);
-            setPhotos((prevState: ObjectType[]) => [...prevState, ...list.data.results]);
-            setTotalPages(list.data.total_pages)
+          const list: ApiSearchResponse = await getImages(query, page)
+          console.log(list);
+          
+            setPhotos((prevState: PhotoType[]) => [...prevState, ...list.results])
+            setTotalPages(list.total_pages)
       } catch (error) {
             console.log(error);
             setIsError(true);

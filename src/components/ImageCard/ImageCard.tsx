@@ -1,10 +1,10 @@
 import React from 'react';
-import { ObjectType } from '../../types';
+import { PhotoType } from '../../types';
 import css from './ImageCard.module.css'
 
 interface ImageCardType {
-    photo: ObjectType
-    onPhotoClick: (photo: ObjectType) => void
+    photo: PhotoType
+    onPhotoClick: (photo: PhotoType) => void
 }
 const ImageCard: React.FC<ImageCardType> = ({ photo, onPhotoClick }) => {
   return (
